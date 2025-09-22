@@ -8,7 +8,13 @@ import morgan from "morgan";
 const app = express();
 const port = 3001;
 
-app.use(morgan("tiny"));
+app.use((req, res, next) => {
+  console.log("Request Method: ", req.method);
+  console.log("Request URL: ", req.url);
+  next();
+});
+
+// app.use(morgan("tiny"));
 
 // app.get("/", (req, res) => {
 //   res.sendFile(__dirname + "/public/index.html");
